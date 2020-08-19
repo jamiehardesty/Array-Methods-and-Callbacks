@@ -22,6 +22,17 @@ console.log("(b) " + task1b["Away Team Name"]);
 console.log("(c) " + task1b["Home Team Goals"]);
 console.log("(d) " + task1b["Away Team Goals"]);
 
+const task1c = () => {
+    if((task1b["Home Team Goals"] > task1b["Away Team Goals"])){
+        console.log("(e) " + task1b["Home Team Name"]);
+    }
+    else if((task1b["Home Team Goals"] === task1b["Away Team Goals"])){
+        console.log("(e) They tied!");
+    }else{
+        console.log("(e) " + task1b["Away Team Name"]);
+    }
+}
+task1c();
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
