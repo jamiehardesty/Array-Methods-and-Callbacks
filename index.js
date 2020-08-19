@@ -91,10 +91,12 @@ console.log(getWinnersByYear(getWinners, getYears));
 function getAverageGoals(data) {
     const totalHome = data.reduce(function(accumulator,item){
         return accumulator + item["Home Team Goals"];
+        
     }, 0);
     console.log("Average n of Home Team Goals: " + totalHome / fifaData.length);
     const totalAway = data.reduce(function(accumulator,item){
         return accumulator + item["Away Team Goals"];
+        
     }, 0);
     console.log("Average n of Away Team Goals: " + totalAway / fifaData.length);
 }
