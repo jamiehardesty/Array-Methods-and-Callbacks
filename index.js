@@ -25,8 +25,7 @@ console.log("(d) " + task1b["Away Team Goals"]);
 const task1c = () => {
     if((task1b["Home Team Goals"] > task1b["Away Team Goals"])){
         console.log("(e) " + task1b["Home Team Name"]);
-    }
-    else if((task1b["Home Team Goals"] === task1b["Away Team Goals"])){
+    }else if((task1b["Home Team Goals"] === task1b["Away Team Goals"])){
         console.log("(e) They tied!");
     }else{
         console.log("(e) " + task1b["Away Team Name"]);
@@ -52,13 +51,21 @@ console.log(getYears(getFinals,fifaData));
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-
-    /* code here */
-
+function getWinners(cbNotChargeback) {
+    let callbackList = cbNotChargeback(fifaData); // fr. t3
+    const t4List = callbackList.map(function(item, index){ // fr. t2; replaced t2 naming conv with item 
+        if(item["Home Team Goals"] > item["Away Team Goals"]){
+            return item["Home Team Name"];
+        }else if((item["Home Team Goals"] === item["Away Team Goals"])){
+            let winCon = item["Win conditions"]; // conditions [sic]; lowercase C
+            const winner = winCon.split("win");
+            return winner[0];
+        }else{
+            return item["Away Team Name"];
+        }
+    }); return t4List;
 };
-
-getWinners();
+console.log(getWinners(getFinals,fifaData));
 
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
